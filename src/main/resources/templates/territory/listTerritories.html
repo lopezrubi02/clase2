@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Territories List</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body class="container">
+<div class="container">
+    <h1>Lista de Territorios</h1>
+    <a class="btn btn-success" th:href="@{/territory/new}">New Territory</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Territory Description</th>
+            <th>regionId</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="territory: ${territoryList}">
+            <td th:text="${territory.territoryid}"></td>
+            <td th:text="${territory.territorydescription}"></td>
+            <td th:text="${territory.regionid}"></td>
+            <td><a class="btn btn-info" th:href="@{'/territory/edit?territoryid=' + ${territory.territoryid}}">Editar</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/territory/delete?territoryid=' + ${territory.territoryid}}">Borrar</a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

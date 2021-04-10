@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo territorio</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body class="container">
+<h2>Nuevo territorio</h2>
+<hr/>
+<form method="post" th:action="@{/territory/save}">
+    <div class="form-group">
+        <label for="territoryid">Id del territorio</label>
+        <input name="territoryid" type="text" class="form-control" id="territoryid">
+    </div>
+    <div class="form-group">
+        <label for="territorydescription">Descripción del territorio</label>
+        <input name="territorydescription" type="text" class="form-control" id="territorydescription">
+    </div>
+    <div>
+        <label for="regionid">Id de la region</label>
+        <br/>
+        <select id="regionid" name="regionid">
+            <option th:each="territory : ${territoryList}"
+                    th:text="${territory.regionid}" th:value="${territory.regionid}">Carla</option>   //debe ir el id de la region, no del territorio
+        </select>
+    </div>
+
+    <br/>
+    <div class="form-group">
+        <a class="btn btn-danger" th:href="@{/territory}">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+</form>
+</body>
+</html>

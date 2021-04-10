@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet"/>
+        <script></script>
+        <script></script>
+    </head>
+    <body>
+        <h2>Home Page</h2>
+        <img th:src="@{/img/pucp.png}">
+
+        <h4>Alumnos</h4>
+    <form th:object="${alumno}">
+        <div>
+            <label>Nombre</label>
+            <input type="text" th:field="*{nombre}" name="nombre">
+        </div>
+        <div>
+            <label>Código</label>
+            <input type="text" th:field="*{codigo}" name="codigo">
+        </div>
+    </form>
+
+    <h4>Lista de alumnos</h4>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Código</th>
+        </tr>
+        <tr th:each="alumno, variableEstado : ${listaAlumnos}">
+            <td th:text="${variableEstado.index + 1}"></td>
+            <td th:text="${alumno.nombre}">Pedro</td>
+            <td th:text="${alumno.codigo}">1234</td>
+        </tr>
+
+    </table>
+
+    <h4>Asesores</h4>
+    <label for="asesores">Seleccione su asesor</label>
+    <select id="asesores">
+        <option th:each="alumno : ${listaAlumnos}"
+                th:text="${alumno.nombre}" value="1234">Carla</option>
+    </select>
+
+    </body>
+</html>
