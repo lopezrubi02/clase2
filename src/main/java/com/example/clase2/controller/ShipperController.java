@@ -77,4 +77,14 @@ public class ShipperController {
        return "/shipper/list";
        // return "redirect:/shipper";
     }
+
+    @PostMapping("/shipper/search2")
+    public String searchShipperPrueba(@RequestParam("searchName") String searchName,
+                                Model model, RedirectAttributes attr){
+//        model.addAttribute("shipperList",shipperRepository.findByCompanyname(searchName));
+        model.addAttribute("shipperList",shipperRepository.listarTransportistasPorNombre(searchName));
+        attr.addFlashAttribute("busqueda",searchName);
+        return "/shipper/list";
+        // return "redirect:/shipper";
+    }
 }
